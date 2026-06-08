@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Product Review Detector</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            padding:20px;
+        }
+
+        .container{
+            width:100%;
+            max-width:700px;
+            background:#fff;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        .logo{
+            font-size:60px;
+            margin-bottom:10px;
+        }
+
+        h1{
+            color:#222;
+            margin-bottom:10px;
+            font-size:32px;
+        }
+
+        .subtitle{
+            color:#666;
+            margin-bottom:30px;
+        }
+
+        .upload-box{
+            border:3px dashed #6666ea;
+            border-radius:15px;
+            padding:40px;
+            transition:0.3s;
+            cursor:pointer;
+        }
+
+        .upload-box:hover{
+            background:#f7f8ff;
+        }
+
+        .upload-box p{
+            margin-top:10px;
+            color:#666;
+        }
+
+        input[type="file"]{
+            margin-top:15px;
+            font-size:16px;
+        }
+
+        .btn{
+            margin-top:25px;
+            padding:15px 40px;
+            border:none;
+            border-radius:10px;
+            background:#667eea;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#4f5bd5;
+            transform:translateY(-2px);
+        }
+
+        .features{
+            display:flex;
+            justify-content:space-between;
+            margin-top:35px;
+            flex-wrap:wrap;
+            gap:15px;
+        }
+
+        .card{
+            flex:1;
+            min-width:150px;
+            background:#f4f6ff;
+            padding:15px;
+            border-radius:12px;
+        }
+
+        .card h3{
+            color:#667eea;
+            margin-bottom:5px;
+        }
+
+        .footer{
+            margin-top:25px;
+            color:#777;
+            font-size:14px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🛡️</div>
+
+    <h1>Fake Product Review Detector</h1>
+
+    <p class="subtitle">
+        Upload a CSV file or URL and let AI identify fake and genuine reviews instantly.
+    </p>
+
+    <!-- <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+        <div class="upload-box">
+            <h2>📂Upload CSV File</h2>
+            <p>Select your review dataset for analysis</p>
+            <input type="file" name="file" required>
+            <h2> Upload URL </h2>
+            <p>Paste the URL of the product</p>
+            <input type="url" name="url" required>
+        </div>
+        <div class="upload-box">
+            <h2>📂 Upload URL </h2>
+            <p>Select your review dataset for analysis</p>
+
+            <input type="file" name="file" required>
+        </div> -->
+
+        <button type="submit" class="btn">
+            🔍 Analyze Reviews
+        </button>
+
+    </form> 
+<form action="/analyze" method="POST" enctype="multipart/form-data">
+
+    <h3>Select Input Type</h3>
+
+    <input type="radio" name="input_type" value="csv" checked>
+    CSV File
+
+    <input type="radio" name="input_type" value="url">
+    URL
+
+    <br><br>
+
+    <div id="csvSection" class="upload-box">
+        <h2>📂 Upload CSV File</h2>
+        <p>Select your review dataset for analysis</p>
+        <input type="file" name="file">
+    </div>
+
+    <div id="urlSection" class="upload-box" style="display:none;">
+        <h2>🔗 Enter Product URL</h2>
+        <p>Paste product URL</p>
+        <input type="url" name="url">
+    </div>
+
+    <button type="submit" class="btn">
+        🔍 Analyze Reviews
+    </button>
+
+</form>
+
+<script>
+const csvRadio = document.querySelector('input[value="csv"]');
+const urlRadio = document.querySelector('input[value="url"]');
+
+const csvSection = document.getElementById('csvSection');
+const urlSection = document.getElementById('urlSection');
+
+csvRadio.addEventListener('change', () => {
+    csvSection.style.display = 'block';
+    urlSection.style.display = 'none';
+});
+
+urlRadio.addEventListener('change', () => {
+    csvSection.style.display = 'none';
+    urlSection.style.display = 'block';
+});
+</script>
+    <div class="features">
+
+        <div class="card">
+            <h3>⚡ Fast</h3>
+            <p>Instant Analysis</p>
+        </div>
+
+        <div class="card">
+            <h3>🤖 AI Based</h3>
+            <!-- <p>Machine Learning</p> -->
+        </div>
+
+        <div class="card">
+            <h3>📊 Reports</h3>
+            <p>Trust Score</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Copyright © 2026 thinkbit.com <br>
+This is the official website of thinkbit that help to detect the review.<br>
+         ````
+    </div>
+
+</div>
+
+</body>
+</html>

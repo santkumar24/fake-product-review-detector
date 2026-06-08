@@ -1,0 +1,148 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Review Analysis Report</h1>
+
+<h2>Total Reviews: {{ total }}</h2>
+<h2>Genuine Reviews: {{ genuine }}</h2>
+<h2>Fake Reviews: {{ fake }}</h2>
+<h2>Trust Score: {{ trust_score }}%</h2>
+
+<table>
+<tr>
+<th>Review</th>
+<th>Prediction</th>
+</tr>
+
+{% for row in results %}
+<tr>
+<td>{{ row.review }}</td>
+<td>{{ row.prediction }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+</body>
+</html> -->
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'poppins',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            padding:20px;
+        }
+
+        .container{
+            width:100%;
+            max-width:700px;
+            background:#fff;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+            text-align:center;
+
+        }
+
+        h1{
+            color:#222;
+            margin-bottom:10px;
+            font-size:32px;
+        }
+        .subtitle{
+            color:#666;
+            margin-bottom:30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+```
+<div class="header">
+    <h1>📊 Review Analysis Report</h1>
+    <p class="subtitle">
+        Machine LearningBAsed Fake Review Detection
+    </p>
+</div>
+
+<div class="stats-container">
+
+    <div class="card">
+        <h3>Total Reviews</h3>
+        <h2>{{ total }}</h2>
+    </div>
+
+    <div class="card genuine">
+        <h3>Genuine Reviews</h3>
+        <h2>{{ genuine }}</h2>
+    </div>
+
+    <div class="card fake">
+        <h3>Fake Reviews</h3>
+        <h2>{{ fake }}</h2>
+    </div>
+
+    <div class="card trust">
+        <h3>Trust Score</h3>
+        <h2>{{ trust_score }}%</h2>
+    </div>
+
+</div>
+
+<h2 class="table-title">Review Details</h2>
+
+<table>
+    <tr>
+        <th>Review</th>
+        <th>Prediction</th>
+    </tr>
+
+    {% for row in results %}
+    <tr>
+        <td>{{ row.review }}</td>
+
+        <td>
+            {% if row.prediction == "fake" %}
+                <span class="badge fake-badge">Fake</span>
+            {% else %}
+                <span class="badge genuine-badge">Genuine</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="btn-box">
+    <a href="/" class="btn">Analyze Another File</a>
+</div>
+`````
+
+</div>
+
+</body>
+</html>
